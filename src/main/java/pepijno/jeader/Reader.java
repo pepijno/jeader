@@ -1,14 +1,13 @@
 package pepijno.jeader;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 public final class Reader<T,R> {
     private final Function<? super T, ? extends R> run;
 
     private Reader(final Function<? super T, ? extends R> run) {
-        if (run == null) {
-            throw new NullPointerException();
-        }
+        Objects.requireNonNull(run);
         this.run = run;
     }
 

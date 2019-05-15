@@ -5,8 +5,14 @@ import org.junit.Test;
 import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ReaderTest {
+    @Test
+    public void throwsNPEOnOfWithNullMethod() {
+        assertThatThrownBy(() -> Reader.of(null)).isInstanceOf(NullPointerException.class);
+    }
+
     @Test
     public void canCreateReaderFromOfMethod() {
         Function<Integer, String> f = Object::toString;
